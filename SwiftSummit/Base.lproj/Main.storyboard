@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="EYw-Pa-YXU">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="syd-Br-3FY">
+            <objects>
+                <navigationController id="EYw-Pa-YXU" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MT2-ZJ-vXE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="FHS-YQ-drV" kind="relationship" relationship="rootViewController" id="TnI-Uw-ANO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gD4-Nt-Wsi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1301" y="397"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="xX0-ef-N9a">
+            <objects>
+                <tableViewController id="FHS-YQ-drV" customClass="ViewController" customModule="SwiftSummit" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="110" sectionHeaderHeight="28" sectionFooterHeight="28" id="aid-lh-wDe">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="sxb-bp-7rJ" detailTextLabel="fK7-5t-bnQ" style="IBUITableViewCellStyleSubtitle" id="fuo-mb-iWa">
+                                <rect key="frame" x="0.0" y="92" width="600" height="110"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fuo-mb-iWa" id="fVa-ON-PdT">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="109"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sxb-bp-7rJ">
+                                            <rect key="frame" x="15" y="38" width="32" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fK7-5t-bnQ">
+                                            <rect key="frame" x="15" y="58" width="41" height="14"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="FHS-YQ-drV" id="iMO-K8-VG0"/>
+                            <outlet property="delegate" destination="FHS-YQ-drV" id="LGW-TY-J6P"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="aiS-4E-LCL">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="X9B-Y1-ohI">
+                            <connections>
+                                <segue destination="PMG-Dn-ciQ" kind="show" action="showDetailViewController:sender:" id="iuJ-wq-bHg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Ez-CY-Fxu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-457" y="448"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="LKS-Kb-zyl">
+            <objects>
+                <viewController id="PMG-Dn-ciQ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1K1-Uu-wBH"/>
+                        <viewControllerLayoutGuide type="bottom" id="xfH-NH-aZ7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Rcu-Kv-jcc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="aXk-Cu-ked">
+                                <rect key="frame" x="152" y="119" width="297" height="384"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank you" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aR9-eq-1DG">
+                                        <rect key="frame" x="12" y="0.0" width="274" height="72"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="kTF-27-FS8">
+                                        <rect key="frame" x="0.0" y="172" width="297" height="70"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="900" verticalHuggingPriority="251" image="BrightFutures" translatesAutoresizingMaskIntoConstraints="NO" id="fxY-Xu-clJ">
+                                                <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="fxY-Xu-clJ" secondAttribute="height" multiplier="1:1" id="1l1-mE-519"/>
+                                                    <constraint firstAttribute="width" constant="70" id="zbd-Ue-hsG"/>
+                                                </constraints>
+                                            </imageView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="TVE-cG-8MD">
+                                                <rect key="frame" x="75" y="15" width="222" height="40"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BrightFutures" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6G-1v-JFw">
+                                                        <rect key="frame" x="0.0" y="0.0" width="222" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="https://github.com/Thomvis/BrightFutures" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rvq-Jl-kaT">
+                                                        <rect key="frame" x="0.0" y="26" width="222" height="14"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="kBG-ux-TxR">
+                                        <rect key="frame" x="92" y="342" width="114" height="42"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@thomvis88" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yum-Jo-0zL">
+                                                <rect key="frame" x="0.0" y="0.0" width="114" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="highstreetapp.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swe-Sk-Lj5">
+                                                <rect key="frame" x="0.0" y="26" width="114" height="16"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aXk-Cu-ked" firstAttribute="centerX" secondItem="Rcu-Kv-jcc" secondAttribute="centerX" id="J1C-AW-Xm1"/>
+                            <constraint firstItem="aXk-Cu-ked" firstAttribute="centerY" secondItem="Rcu-Kv-jcc" secondAttribute="centerY" id="Ra5-ue-kbo"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7my-z1-VxM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="340" y="448"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="BrightFutures" width="170" height="230"/>
+    </resources>
+</document>
