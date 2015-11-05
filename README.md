@@ -6,3 +6,5 @@ With this talk, I have attempted to show how [Futures](https://en.wikipedia.org/
 [View all code changes made during the talk.](https://github.com/Thomvis/SFSwiftSummit2015/compare/9f38ae6fa65b31540f2b1ebd110965c51bb38690...02e0cdcb52e8f780e8c8590092f82e840d896805)
 
 If you want to use futures in your code, I can recommend [BrightFutures](https://github.com/Thomvis/BrightFutures).
+
+![A screenshot of Xcode and the iOS simulator running the project](screenshot.png)
