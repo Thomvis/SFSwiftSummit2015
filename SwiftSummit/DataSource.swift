@@ -33,40 +33,44 @@ class DataSource {
     let session = FakeNSURLSession()
 }
 
+extension FakeNSURLSession {
+    func fetch(url: String) -> Async<Result<(NSData, NSURLResponse), BirdsError>> {
+        return Async { completion in
+            let task = self.dataTaskWithURL(NSURL(string: url)!, completionHandler: { (data, response, error) -> Void in
+                if let data = data, response = response {
+                    completion(Result(value: (data, response)))
+                } else {
+                    completion(Result(error: .LegacyError(error)))
+                }
+            })
+            task.resume()
+        }
+    }
+}
+
 
 extension DataSource {
     
-    func getBirds(completionHandler: [(Bird, UIImage)] -> Void) {
-        let task = session.dataTaskWithURL(NSURL(string: "http://developer.apple.com/new-language/naming.json")!) { (data, response, error) -> Void in
-            if let data = data, json = self.birdsJsonFromResponseData(data) {
-                var result: [(Bird, UIImage)] = []
-                for (index, bird) in json.enumerate() {
-                    if let bird = self.parseBird(bird) {
-                        self.getImage(bird) { image in
-                            result.insert((bird, image), atIndex: min(result.count, index))
-                            
-                            if result.count == json.count {
-                                dispatch_async(dispatch_get_main_queue()) {
-                                    completionHandler(result)
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+    func getBirds() -> Future<[(Bird, UIImage)], BirdsError> {
+        return session.fetch("http://developer.apple.com/new-language/naming.json").flatMap { data, response in
+            return self.birdsJsonFromResponseData(data)
+        }.map { json in
+            return json.flatMap(self.parseBird)
+        }.flatMap { birds in
+            return birds.map(self.getImage).sequence()
         }
-        task.resume()
     }
     
-    func birdsJsonFromResponseData(data: NSData) -> [[String:AnyObject]]? {
-        do {
+    func birdsJsonFromResponseData(data: NSData) -> Result<[[String:AnyObject]], BirdsError> {
+        return materialize {
             let json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0))
-            if let json = json as? [[String:AnyObject]] {
-                return json
+            
+            guard let res = json as? [[String:AnyObject]] else {
+                throw BirdsError.JsonParseError
             }
-        } catch _ { }
-        
-        return nil
+            
+            return res;
+            }.analysis(ifSuccess: { Result(value: $0) }, ifFailure: { Result(error: .LegacyError($0)) });
     }
     
     func parseBird(json: [String:AnyObject]) -> Bird? {
@@ -79,17 +83,14 @@ extension DataSource {
         return nil
     }
     
-    private func getImage(bird: Bird, completionHander: UIImage -> Void) {
-        let task = session.dataTaskWithURL(NSURL(string: bird.imagePath)!) { (data, response, error) -> Void in
-            if let data = data {
-                let image = UIImage(data: data)
-                if let image = image {
-                    completionHander(image)
-                }
+    private func getImage(bird: Bird) -> Future<(Bird, UIImage), BirdsError> {
+        return session.fetch(bird.imagePath).flatMap { data, response -> Result<(Bird, UIImage), BirdsError> in
+            let image = UIImage(data: data)
+            if let image = image {
+                return Result(value: (bird, image))
             }
+            return Result(error: .ImageDecodingError)
         }
-        
-        task.resume()
     }
     
 }

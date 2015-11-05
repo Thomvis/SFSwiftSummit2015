@@ -22,10 +22,13 @@ class ViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        dataSource.getBirds { [weak self] birds in
+        dataSource.getBirds().onSuccess { [weak self] birds in
             self?.birds = birds
             self?.tableView.reloadData()
+        }.onFailure { err in
+            print("errror")
         }
+    
     }
     
 }
